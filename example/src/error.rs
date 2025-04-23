@@ -1,4 +1,5 @@
 use std::fmt;
+use anyhow::anyhow;
 use anywrap::{anywrap, AnyWrap};
 
 pub struct ErrorCode(pub u32);
@@ -21,6 +22,18 @@ pub enum Error {
 }
 
 pub type Result<T, E = Error> = std::result::Result<T, E>;
+
+// TODO 自动实现，参考anyhow
+impl From<Error> for Box<dyn std::error::Error + Send + Sync + 'static> {
+    fn from(e: Error) -> Self {
+        match e {
+            Error::Code { code, .. } => anyhow!("Error Code: {code}").into(),
+            Error::IO { source, .. } => Box::new(source),
+            Error::Context { msg, .. } => anyhow!("{msg}").into(),
+            Error::Any { source, .. } => source,
+        }
+    }
+}
 
 #[macro_export]
 macro_rules! anyerr {

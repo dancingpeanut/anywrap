@@ -1,7 +1,15 @@
 mod error;
 mod app;
 
+
+fn t() {
+    
+}
+
 fn main() {
+    let e = anyerr!("hello {}", "anywrap");
+    let e: Box<dyn std::error::Error + Send + Sync + 'static> = e.into();
+    
     println!("Macro error: {:?}", anyerr!("hello {}", "anywrap"));
     if let Err(e) = app::wrap_to_io() {
         println!("--11: {e:?}");
