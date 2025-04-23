@@ -1,0 +1,12 @@
+[workspace]
+resolver = "3"
+
+members = [
+    "example",
+    "anywrap",
+    "anywrap-macro"
+]
+
+[workspace.dependencies]
+anywrap-macro = { version = "0.1.0", path = "anywrap-macro" }
+anywrap = { version = "0.1.0", path = "anywrap" }

@@ -1,0 +1,12 @@
+[package]
+name = "anywrap"
+version = "0.1.0"
+edition = "2024"
+description = "Anywrap is an error handling mechanism with pseudo-stack traces implemented through SNAFU, the proc macro trace_error, and the DebugTrace trait, inspired by GreptimeDB."
+authors = ["Thomson <tongshengzhou@gmail.com>"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/dancingpeanut/snafu-tracing"
+readme = "../README.md"
+
+[dependencies]
+anywrap-macro.workspace = true
