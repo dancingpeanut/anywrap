@@ -58,4 +58,17 @@ fn main() {
 }
 ```
 
+Output:
+```
+--12: No such file or directory (os error 2)
+0: No such file or directory (os error 2), at hello-anywrap/src/main.rs:38:13
+
+--15 display: Error Code: 1
+
+--15 debug: Error Code: 1
+0: Error Code: 1, at hello-anywrap/src/main.rs:13:10
+1: chain1, at hello-anywrap/src/main.rs:30:20
+2: with_chain, at hello-anywrap/src/main.rs:34:14
+```
+
 Or refer to: [full example](https://github.com/dancingpeanut/anywrap/tree/dev-display/example)
