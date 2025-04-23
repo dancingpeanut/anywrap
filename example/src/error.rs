@@ -21,3 +21,11 @@ pub enum Error {
 }
 
 pub type Result<T, E = Error> = std::result::Result<T, E>;
+
+#[macro_export]
+macro_rules! anyerr {
+    ($($arg:tt)*) => {{
+        let formatted_msg = format!($($arg)*);
+        $crate::error::Error::Context { msg: formatted_msg, location: Default::default(), chain: None, }
+    }};
+}

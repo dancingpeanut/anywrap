@@ -2,6 +2,7 @@ mod error;
 mod app;
 
 fn main() {
+    println!("Macro error: {:?}", anyerr!("hello {}", "anywrap"));
     if let Err(e) = app::wrap_to_io() {
         println!("--11: {e:?}");
         if let error::Error::Any { source, .. } = e {
